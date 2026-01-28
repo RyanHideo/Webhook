@@ -9,11 +9,11 @@ app.use(express.json());
 
 // Set port and verify_token
 const port = process.env.PORT || 3000;
-const verifyToken = process.env.VERIFY_TOKEN;
+const verifyToken = process.env.WP_API_SM_TOKEN;
 
 // Route for GET requests
 app.get('/', (req, res) => {
-  const { 'hub.mode': mode, 'hub.challenge': challenge, 'hub.verify_token': token } = req.query;
+  const { 'hub.mode': mode, 'hub.challenge': challenge, 'hub.WP_API_SM_TOKEN': token } = req.query;
 
   if (mode === 'subscribe' && token === verifyToken) {
     console.log('WEBHOOK VERIFIED');
